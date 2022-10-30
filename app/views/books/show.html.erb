@@ -19,56 +19,28 @@
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
 
+          <!--いいね機能-->
+          <td id="favorite-btn_<%= @book.id %>">
+          <%= render "favorites/favorite", book: @book %>
+          </td>
+
+          <td><%= "コメント数: #{@book.book_comments.count}" %></td>
+
           <% if @book.user == current_user %>
-            <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+          <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
           <% end %>
-
-          <% if @book.favorited_by?(current_user) %>
-            <td>
-              <%= link_to book_favorites_path(@book), method: :delete do %>
-              <i class="fas fa-heart text-danger" ></i><%= @book.favorites.count %>
-              <% end %>
-            </td>
-          <% else %>
-            <td>
-              <%= link_to book_favorites_path(@book), method: :post do %>
-              <i class="fas fa-heart text-primary"></i><%= @book.favorites.count %>
-              <% end %>
-            </td>
-          <% end %>
-
-            <td><%= "コメント数: #{@book.book_comments.count}" %></td>
 
         </tr>
       </table>
-
-      <div class="flex-column">
-      <% @book_comments.each do |book| %>
-        <div class="d-flex align-items-center row">
-          <div>
-          <%= link_to(book.user) do %>
-          <%= image_tag book.user.get_profile_image, size:"80x80" %><br>
-          <%= book.user.name %>
-          <% end %>
-          </div>
-          <div>
-          <%= book.comment %>
-          </div>
-          <% if book.user == current_user %>
-          <div>
-            <%= link_to 'Destroy', book_book_comment_path(book.book, book), method: :delete, class: "btn btn-sm btn-danger"%>
-          </div>
-          <% end %>
-        </div>
-      <% end %>
+      
+      <!--コメント機能-->
+      <div class="comment-index">
+      <%= render "book_comments/index", book: @book %>
       </div>
-
-      <div>
-        <%= form_with model: [@book, @book_comment] do |f| %>
-        <%= f.text_area :comment, class:"form-control", rows: '5' %><br>
-        <%= f.submit "送信" %>
-        <% end %>
+      
+      <div class="new-comment">
+      <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
       </div>
 
     </div>
