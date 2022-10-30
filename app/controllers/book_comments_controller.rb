@@ -6,14 +6,12 @@ class BookCommentsController < ApplicationController
     @comment.book_id = @book.id
     @comment.save
     # redirect_back(fallback_location: root_path)
-    render :book_comments
   end
 
   def destroy
-    BookComment.find(params[:id]).destroy
-    @book = Book.find(params[:book_id])
+    @comment = BookComment.find(params[:id])
+    @comment.destroy
     # redirect_to book_path(params[:book_id])
-    render :book_comments
   end
 
   private
