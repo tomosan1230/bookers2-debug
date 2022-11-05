@@ -22,9 +22,10 @@
         <!--いいね機能-->
         <td id="favorite-btn_<%= book.id %>">
           <%= render "favorites/favorite", book: book %>
-          </td>
+        </td>
+
         <td>
-          コメント数: <%= book.book_comments.count %>
+          <%= render "book_comments/counter", book: book %>
         </td>
       </tr>
     <% end %>
