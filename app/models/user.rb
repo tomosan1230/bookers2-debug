@@ -7,7 +7,11 @@ class User < ApplicationRecord
   has_many :books
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
-  has_one_attached :profile_image
+  has_many :group_users
+  has_many :groups, through: :group_users
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_one_attached :profile_image, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
