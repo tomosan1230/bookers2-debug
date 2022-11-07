@@ -29,7 +29,7 @@
             <%= render "book_comments/counter", book: @book %>
           </td>
           <td>
-            閲覧数: <%=  @book.impressionist_count %>
+            閲覧数: <%=  @book.view_counts.count %>
           </td>
 
           <% if @book.user == current_user %>

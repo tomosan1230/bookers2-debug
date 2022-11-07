@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
-  impressionist :actions=> [:show]
+
 
   def show
     @book = Book.find(params[:id])
@@ -8,7 +9,9 @@ class BooksController < ApplicationController
     @new_book = Book.new
     @book_comment = BookComment.new
     @book_comments = @book.book_comments
-    impressionist(@book, nil, unique: [:session_hash])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
+    end
   end
 
   def index

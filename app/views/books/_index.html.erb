@@ -27,8 +27,8 @@
         <td>
           <%= render "book_comments/counter", book: book %>
         </td>
-        <td>
-          閲覧数: <%=  book.impressionist_count %>
+        <td class="view-count">
+          閲覧数: <%= book.view_counts.count %>
         </td>
       </tr>
     <% end %>
