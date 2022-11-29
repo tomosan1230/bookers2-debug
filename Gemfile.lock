@@ -222,6 +222,9 @@ GEM
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
@@ -266,6 +269,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   spring
   sqlite3 (~> 1.4)
+  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)

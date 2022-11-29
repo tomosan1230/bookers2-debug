@@ -12,6 +12,18 @@
       <%= render 'searches/form' %>
       <h2>Books</h2>
       <%= render 'index', books: @books%>
+
+      <%= form_with url: user_search_form_path(@user), method: :get do |f| %>
+        <%= f.date_field :created_at %>　#①
+        <%= f.submit '検索', class: 'btn btn-primary'  %>
+      <% end %>
+
+      <div id="search_result"> #②
+        <% if @search_book.present? %>
+          <%= render 'search_form', search_book: @search_book %>　#③
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>
