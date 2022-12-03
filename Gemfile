@@ -59,4 +59,5 @@ gem 'jquery-rails'
 
 gem 'impressionist'
 
-gem "chartkick"
+# gem "chartkick"
+# gem "groupdate"

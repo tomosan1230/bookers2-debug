@@ -13,14 +13,15 @@
       <h2>Books</h2>
       <%= render 'index', books: @books%>
 
-      <%= form_with url: user_search_form_path(@user), method: :get do |f| %>
-        <%= f.date_field :created_at %>　#①
+    <!--応用課題9b-->
+      <%= form_with url: user_search_form_path(current_user.id), method: :get, local: false do |f| %>
+        <%= f.date_field :created_at %>
         <%= f.submit '検索', class: 'btn btn-primary'  %>
       <% end %>
 
-      <div id="search_result"> #②
+      <div id="search_result">
         <% if @search_book.present? %>
-          <%= render 'search_form', search_book: @search_book %>　#③
+          <%= render 'search_form', search_book: @search_book %>
         <% end %>
       </div>
 
