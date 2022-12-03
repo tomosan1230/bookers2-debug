@@ -27,6 +27,17 @@
         <td>
           <%= render "book_comments/counter", book: book %>
         </td>
+
+        <div id="post_raty"></div>
+          <script>
+            // scriptファイルをどのidの部分に配置するかを指定
+            let elem = document.querySelector('#post_raty');
+            let opt = {
+              //星画像の指定などのオプションをここに記述,
+             };
+            raty(elem,opt);
+          </script>
+
         <td class="view-count">
           閲覧数: <%= book.view_counts.count %>
         </td>
