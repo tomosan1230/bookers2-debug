@@ -10,9 +10,10 @@ import "channels";
 import "jquery";
 import "popper.js";
 import "bootstrap";
+
 import Chart from "chart.js/auto";
 global.Chart = Chart;
-// import "chartkick/chart.js";
+
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application";
 

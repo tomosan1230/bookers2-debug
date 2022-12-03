@@ -28,6 +28,11 @@
           <td class="book-comments-counter">
             <%= render "book_comments/counter", book: @book %>
           </td>
+
+          <td>
+            <%= render "books/static_rate", book: @book %>
+          </td>
+
           <td>
             閲覧数: <%=  @book.view_counts.count %>
           </td>
