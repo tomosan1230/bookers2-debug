@@ -11,6 +11,11 @@
     <div class='col-md-8 offset-md-1'>
       <%= render 'searches/form' %>
       <h2>Books</h2>
+      <div class="mb-3">
+        <%= link_to '新しい順', books_path(latest: "true") %>
+        |<%= link_to '古い順', books_path(old: "true") %>
+        |<%= link_to '評価の高い順', books_path(rate_count: "true") %>
+      </div>
       <%= render 'index', books: @books%>
 
     <!--応用課題9b-->
