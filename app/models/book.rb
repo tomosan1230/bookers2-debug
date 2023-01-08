@@ -14,6 +14,10 @@ class Book < ApplicationRecord
   scope :created_4days, -> { where(created_at: 4.days.ago.all_day) } 
   scope :created_5days, -> { where(created_at: 5.days.ago.all_day) } 
   scope :created_6days, -> { where(created_at: 6.days.ago.all_day) } 
+  
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :rate_count, -> {order(rate: :desc)}
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
